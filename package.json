@@ -80,7 +80,7 @@
       "createDesktopShortcut": true
     },
     "mac": {
-      "icon": "build/icons/phreshplayer-icon.png.hqx",
+      "icon": "build/icons/phreshplayer-icon.png.icns",
       "category": "public.app-category.video",
       "target": [
         "zip",
