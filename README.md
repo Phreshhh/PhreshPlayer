@@ -107,7 +107,6 @@ The electron (and the original too) Chromium/Chrome currently not support multi 
 
 ## Screenshots
 
-![PhreshPlayer - Player](https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/1_player-only.jpg)
 <img src="https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/1_player-only.jpg" width="400" alt="PhreshPlayer">
 <img src="https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/2_player+controlbox+tooltip+toast.jpg" width="400" alt="Player, Controlbox, Tooltip, Notify">
 <img src="https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/3_play-video.jpg" width="400" alt="Playing video">
@@ -152,7 +151,7 @@ npm start
 ```
 cd node_modules/win-mouse
 
-node-gyp rebuild --target=1.7.9 --arch=x64 --dist-url="https://atom.io/download/atom-shell" --msvs_version=2015
+node-gyp rebuild --target=1.8.2 --arch=x64 --dist-url="https://atom.io/download/atom-shell" --msvs_version=2015
 
 cd ../../
 ```
