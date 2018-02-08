@@ -1,10 +1,8 @@
 # Phreshplayer
 
-![PhreshPlayer logo](https://github.com/Phreshhh/phreshplayer/blob/master/app/img/phreshplayer-icon.png)  
+Inspired by <a href="https://mpv.io/" target="_blank">mpv</a> player (with old hud) - I'm really liked it.. :( and <a href="https://potplayer.daum.net/" target="_blank">PotPlayer</a>.
 
-Inspired by [mpv](https://mpv.io/) player (with old hud) - I'm really liked it.. :( and [DAUM PotPlayer](https://potplayer.daum.net/).
-
-Developed using [GitHub's Electron](https://electronjs.org/).
+Developed using <a href="https://electronjs.org/" target="_blank">Electron</a>.
 
 **Keep It Simple!**
 
@@ -33,7 +31,7 @@ Still I see today '.avi' and '.wmv' files, so..
 .. if you drop an (or more) '.avi' or '.wmv' file into the player,
 then convert files to '.mp4' automatically (and add it to playlist also automatically after conversion).
 
-**WARNING! High CPU usage while coonverting. [FFmpeg](https://ffmpeg.org/)**
+**WARNING! High CPU usage while converting.**
 
 The conversion unfortunately work only Linux and Windows. As far as I know, not works on MacOS and the CPU limit works on Linux only.
 
@@ -101,7 +99,7 @@ The application can read folders also, but just 1 level deep:
 
 level 1 and level 2 files will append also to the playlist if you drop in at the same time, but  level 3 file in Folder2 won't.
 
-### 'Sorry bro no mana..'
+### 'Sorry bro, no mana..'
 
 The electron (and the original too) Chromium/Chrome currently not support multi audio tracks in html 5 video players, so the language change unavilable yet in multi language videos.. :(
 
@@ -109,14 +107,15 @@ The electron (and the original too) Chromium/Chrome currently not support multi 
 
 ## Screenshots
 
-![PhreshPlayer - Player](https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/1_player-only.jpg)  
-![PhreshPlayer - Player+Controlbox+Tooltip+Notify](https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/2_player+controlbox+tooltip+toast.jpg)  
-![PhreshPlayer - Playing video](https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/3_play-video.jpg)  
-![PhreshPlayer - Show subtitle](https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/4_subtitles.jpg)   
-![PhreshPlayer - Right click menu](https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/5_rightclickmenu.jpg)   
-![PhreshPlayer - Convert video (while playing other)](https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/6_convert-while-playing.jpg)   
-![PhreshPlayer - Still converting (after modal closed)](https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/7_still-converting-after-close-modal.jpg)   
-![PhreshPlayer - After conversion (auto add to playlist and) play the video](https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/8_after-conversion-play-video.jpg)   
+![PhreshPlayer - Player](https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/1_player-only.jpg)
+<img src="https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/1_player-only.jpg" width="400" alt="PhreshPlayer">
+<img src="https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/2_player+controlbox+tooltip+toast.jpg" width="400" alt="Player, Controlbox, Tooltip, Notify">
+<img src="https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/3_play-video.jpg" width="400" alt="Playing video">
+<img src="https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/4_subtitles.jpg" width="400" alt="Show subtitle">
+<img src="https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/5_rightclickmenu.jpg" width="400" alt="Right click menu">
+<img src="https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/6_convert-while-playing.jpg" width="400" alt="Convert video (while playing other)">
+<img src="https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/7_still-converting-after-close-modal.jpg" width="400" alt="Still converting (after modal closed)">
+<img src="https://github.com/Phreshhh/phreshplayer/blob/master/screenshots/8_after-conversion-play-video.jpg" width="400" alt="After conversion (auto add to playlist and) play the video">
 
 ## Licence
 Copyright (c) 2018, Krisztián Kis - Phresh-IT. All rights reserved.
@@ -128,9 +127,9 @@ Licensed under the [MIT](https://github.com/Phreshhh/phreshplayer/blob/master/LI
 
 ## Web
 
-[Phresh-IT](http://phresh-it.hu/)
+<a href="http://phresh-it.hu/" target="_blank">Phresh-IT</a>
 
-[PhreshPlayer](http://phresh-it.hu/apps/phreshplayer/)
+<a href="http://phresh-it.hu/apps/phreshplayer/" target="_blank">PhreshPlayer</a>
 
 ## Dev
 
