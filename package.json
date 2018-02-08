@@ -1,0 +1,91 @@
+{
+  "name": "phreshplayer",
+  "productName": "PhreshPlayer",
+  "version": "1.0.0",
+  "description": "Electron media player application.",
+  "homepage": "http://phresh-it.hu/apps/phreshplayer/",
+  "author": "Phresh <thatismyspecial@gmail.com>",
+  "copyright": "© 2018, Krisztián Kis - Phresh-IT",
+  "license": "MIT",
+  "repository": "https://github.com/Phreshhh/PhreshPlayer/",
+  "keywords": [
+    "Electron",
+    "Media",
+    "Audio",
+    "Video",
+    "Player",
+    "PhreshPlayer"
+  ],
+  "main": "main.js",
+  "dependencies": {
+    "electron-window-state": "4.1.1",
+    "electron-store": "1.3.0",
+    "electron-drag": "1.2.0",
+    "desktop-env": "1.0.0",
+    "electron-context-menu": "0.9.1",
+    "electron-updater": "2.19.1",
+    "mousetrap": "1.6.1",
+    "about-window": "1.8.0",
+    "nedb": "1.8.0",
+    "srt2vtt": "1.3.1",
+    "ffmpeg-binaries": "3.2.2-3",
+    "fluent-ffmpeg": "2.1.2"
+  },
+  "devDependencies": {
+    "electron": "1.7.9",
+    "electron-builder": "19.54.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "build": {
+    "appId": "com.phreshplayer",
+    "productName": "PhreshPlayer",
+    "copyright": "© 2018, Phresh-IT",
+    "asar": true,
+    "fileAssociations": {
+      "ext": "pppl",
+      "name": "PhreshPlayer playlist"
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://phresh-it.hu/apps/phreshplayer/releases/"
+      }
+    ],
+    "linux": {
+      "icon": "build/icons/",
+      "maintainer": "Krisztian Kis <thatismyspecial@gmail.com>",
+      "synopsis": "Media player.",
+      "category": "AudioVideo",
+      "packageCategory": "video",
+      "description": "Electron based media player.",
+      "target": [
+        "AppImage"
+      ]
+    },
+    "win": {
+      "icon": "app/img/phreshplayer-icon.png.ico",
+      "publisherName": "Krisztian Kis <thatismyspecial@gmail.com>",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": true,
+      "installerIcon": "app/img/phreshplayer-icon.png.ico",
+      "createDesktopShortcut": true
+    },
+    "mac": {
+      "icon": "build/icons/phreshplayer-icon.png.hqx",
+      "category": "public.app-category.video",
+      "target": [
+        "zip",
+        "dmg"
+      ]
+    }
+  }
+}
