@@ -14,7 +14,7 @@ At last time I used PotPlayer but at this time is overhyped too.
 The lot of extra features is it would be awesome, but finaly the program can't do that normally what it created first.
 So I make my own..
 
-I don't planning more features to the updates (exept audioTrack support/changes if will supported..), only neccessary bux fixes.
+I don't planning more features to the updates (exept audioTrack support/changes if will supported..), only neccessary bug fixes.
 
 The Phresh media player is a simple and intuitive desktop app for Windows, Mac and Linux. It plays media files.. end of story.
 
