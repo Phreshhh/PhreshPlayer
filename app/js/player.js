@@ -36,6 +36,8 @@ function handlePlayPause(operation) {
   }
 }
 
+let tiredtoplaybotnotfound = 0;
+
 function playVideo(videoid) {
 
   playlistfile.findOne({ _id: parseInt(videoid) }, function(err, d) {
@@ -63,8 +65,24 @@ function playVideo(videoid) {
         getAudioEncoding(d._path);
       }
       
-      handlePlayPause("play");
-      setToast(d._name);
+      if (fs.existsSync(d._path)) {
+        tiredtoplaybotnotfound = 0;
+        handlePlayPause("play");
+        setToast(d._name);
+      } else {
+
+        if (videoid === tiredtoplaybotnotfound) {
+          handlePlayPause("pause");
+        } else {
+
+          if (tiredtoplaybotnotfound === 0) {
+            tiredtoplaybotnotfound = videoid;
+          }
+          playNext();
+
+        }
+        
+      }
 
     }
 
