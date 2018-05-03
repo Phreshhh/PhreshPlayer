@@ -146,16 +146,6 @@ npm install
 npm start
 ```
 
-*Repair bindig error on startup. (if you got it, on Windows). Depency: Microsoft Visual C++ Build Tools 2015*
-
-```
-cd node_modules/win-mouse
-
-node-gyp rebuild --target=1.8.2 --arch=x64 --dist-url="https://atom.io/download/atom-shell" --msvs_version=2015
-
-cd ../../
-```
-
 ### Build
 
 ```

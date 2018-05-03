@@ -36,8 +36,6 @@ function handlePlayPause(operation) {
   }
 }
 
-let tiredtoplaybotnotfound = 0;
-
 function playVideo(videoid) {
 
   playlistfile.findOne({ _id: parseInt(videoid) }, function(err, d) {
@@ -66,22 +64,10 @@ function playVideo(videoid) {
       }
       
       if (fs.existsSync(d._path)) {
-        tiredtoplaybotnotfound = 0;
         handlePlayPause("play");
         setToast(d._name);
       } else {
-
-        if (videoid === tiredtoplaybotnotfound) {
-          handlePlayPause("pause");
-        } else {
-
-          if (tiredtoplaybotnotfound === 0) {
-            tiredtoplaybotnotfound = videoid;
-          }
-          playNext();
-
-        }
-        
+        playNext();
       }
 
     }
@@ -100,6 +86,8 @@ function playPrev() {
 
 }
 
+let tiredtoplaybutnotfound = 0;
+
 function playNext() {
 
   let currPlay = playing.getAttribute("data");
@@ -107,18 +95,35 @@ function playNext() {
 
   playlistfile.findOne({ _id: nextPlay }, function(err, d) {
 
-    if (d === null) {
+    if (d !== null) {
 
-      playlistfile.findOne({ _id: 1 }, function(err, d1) {
+      if (fs.existsSync(d._path)) {
+        tiredtoplaybutnotfound = 0;
+        playVideo(nextPlay);
+      } else {
+        w3.removeClass('.vidlink','activated');
 
-        if (d1 !== null) {
-          playVideo(1);
+        if (parseInt(currPlay) !== 0) {
+          document.getElementById('vid-' + currPlay).style.color = 'red';
         }
 
-      });
+        if (parseInt(nextPlay) === parseInt(tiredtoplaybutnotfound)) {
+          handlePlayPause("pause");
+        } else {
+
+          if (tiredtoplaybutnotfound === 0) {
+            tiredtoplaybutnotfound = currPlay;
+          }
+          playing.setAttribute("data", nextPlay);
+          playNext();
+        }
+        
+      }
 
     } else {
-      playVideo(d._id);
+      document.getElementById('vid-' + currPlay).style.color = 'red';
+      playing.setAttribute("data", 0);
+      playNext();
     }
 
   });

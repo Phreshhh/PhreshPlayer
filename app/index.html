@@ -179,14 +179,6 @@
       const convertmodal = document.getElementById('convertmodal');
       const convertmodalcontent = document.getElementById('convertmodalcontent');
 
-      let dragWindow = require('electron-drag');
-      // Dragging the element will drag the whole window. 
-      dragWindow('#videoplayer');
-      // Fallback to using -webkit-app-region property.
-      if(!dragWindow.supported) {
-        document.querySelector('#videoplayer').style['-webkit-app-region'] = 'drag';
-      }
-
       const os = process.platform;
       const electron = require('electron');
       const {remote, ipcRenderer} = require('electron');
@@ -376,11 +368,15 @@
           const desktopEnv = require('desktop-env');
           desktopEnv().then(currEnv => {
             if(currEnv === 'Unity') { 
-              currentWindow.setProgressBar(currPercentageToTasKbar);
+              if (currPercentageToTasKbar !== NaN) {
+                currentWindow.setProgressBar(currPercentageToTasKbar);
+              }
             }
           });
         } else {
-          currentWindow.setProgressBar(currPercentageToTasKbar);
+          if (currPercentageToTasKbar !== NaN) {
+            currentWindow.setProgressBar(currPercentageToTasKbar);
+          }
         }
 
         store.set('lastplayed.videoid', currPlay);

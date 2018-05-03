@@ -11,8 +11,8 @@ a:hover {color:rgb(68, 228, 68);}
 .activated {color:rgb(68, 228, 68)!important;}
 
 div#toasts {z-index:9999999999;position:absolute;top:0;left:0;}
-span#aacconvertspan {position:absolute;top:25px;left:0;cursor:pointer;}
-span#aacconvertspanclose {position:absolute;top:25px;left:100px;cursor:pointer;}
+span#aacconvertspan {position:absolute;top:25px;left:0;cursor:pointer;font-family:sans-serif;}
+span#aacconvertspanclose {position:absolute;top:25px;left:88px;cursor:pointer;}
 video#videoplayer {z-index:-1;width:60%;background-color:black;}
 video::-webkit-media-controls {display:none !important;}
 ol#playlist {width:40%;max-width:40%;margin:0;background-color:black;border-left:1px solid green;overflow-y:auto;}
