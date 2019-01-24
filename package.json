@@ -3,8 +3,8 @@
   "productName": "PhreshPlayer",
   "version": "1.0.1",
   "description": "Electron media player application.",
-  "homepage": "http://phresh-it.hu/apps/phreshplayer/",
-  "author": "Phresh <thatismyspecial@gmail.com>",
+  "homepage": "https://phresh-it.hu/apps/phreshplayer/",
+  "author": "Phresh",
   "copyright": "© 2018, Krisztián Kis - Phresh-IT",
   "license": "MIT",
   "repository": "https://github.com/Phreshhh/PhreshPlayer/",
@@ -57,7 +57,7 @@
     ],
     "linux": {
       "icon": "build/icons/",
-      "maintainer": "Krisztian Kis <thatismyspecial@gmail.com>",
+      "maintainer": "Krisztian Kis",
       "synopsis": "Media player.",
       "category": "AudioVideo",
       "packageCategory": "video",
@@ -68,7 +68,7 @@
     },
     "win": {
       "icon": "app/img/phreshplayer-icon.png.ico",
-      "publisherName": "Krisztian Kis <thatismyspecial@gmail.com>",
+      "publisherName": "Krisztian Kis",
       "target": [
         "nsis"
       ]

@@ -126,9 +126,9 @@ Licensed under the [MIT](https://github.com/Phreshhh/phreshplayer/blob/master/LI
 
 ## Web
 
-<a href="http://phresh-it.hu/" target="_blank">Phresh-IT</a>
+<a href="https://phresh-it.hu/" target="_blank">Phresh-IT</a>
 
-<a href="http://phresh-it.hu/apps/phreshplayer/" target="_blank">PhreshPlayer</a>
+<a href="https://phresh-it.hu/apps/phreshplayer/" target="_blank">PhreshPlayer</a>
 
 ## Dev
 
@@ -151,3 +151,9 @@ npm start
 ```
 npm run dist
 ```
+
+### Support
+
+If you like my work(s), please buy me a coffee or support/donate me. Contributions, issues(problems, ideas) and [donates](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L3HSBGM4JTKEL&source=url) are welcome.
+
+Thank you, Have a nice day!
