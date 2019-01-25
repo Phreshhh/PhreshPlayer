@@ -157,7 +157,7 @@ function createWindow () {
                 icon_path: __dirname + '/app/img/phreshplayer-icon.png',
                 copyright: 'Copyright (c) 2018, Krisztián Kis - Phresh-IT. All rights reserved.',
                 package_json_dir: __dirname,
-                homepage: 'http://phresh-it.hu/apps/phreshplayer/',
+                homepage: 'https://phresh-it.hu/apps/phreshplayer/',
                 bug_report_url: 'https://github.com/Phreshhh',
                 license: 'MIT'
               });
@@ -165,11 +165,11 @@ function createWindow () {
           },
           {
             label: 'PhreshPlayer website',
-            click () { require('electron').shell.openExternal('http://phresh-it.hu/apps/phreshplayer/'); }
+            click () { require('electron').shell.openExternal('https://phresh-it.hu/apps/phreshplayer/'); }
           },
           {
             label: 'Phresh-IT',
-            click () { require('electron').shell.openExternal('http://phresh-it.hu/'); }
+            click () { require('electron').shell.openExternal('https://phresh-it.hu/'); }
           },
           {
             label: 'Electron',
