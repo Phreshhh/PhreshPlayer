@@ -57,13 +57,8 @@ function playVideo(videoid) {
         loadSubtitle();
       }
       getAudiotracks(d._name, d._path);
-
-      // search mkv audio codecs (ac3 audio codec in mkv containers currently not supported in html5 videoplayer)
-      if (path.extname(d._name) === '.mkv') {
-        getAudioEncoding(d._path);
-      }
       
-      if (fs.existsSync(d._path)) {
+      if (fse.existsSync(d._path)) {
         handlePlayPause("play");
         setToast(d._name);
       } else {
@@ -97,7 +92,7 @@ function playNext() {
 
     if (d !== null) {
 
-      if (fs.existsSync(d._path)) {
+      if (fse.existsSync(d._path)) {
         tiredtoplaybutnotfound = 0;
         playVideo(nextPlay);
       } else {
@@ -233,7 +228,7 @@ function getSubtitles(filename, filepath) {
   let videoNameOnlyLength = videoNameOnly.length;
 
   let videoDir = path.dirname(filepath);
-  let folderFiles = fs.readdirSync(videoDir);
+  let folderFiles = fse.readdirSync(videoDir);
 
   for (let fileInFolder in folderFiles) {
 
@@ -251,6 +246,7 @@ function getSubtitles(filename, filepath) {
         
       }
       allSubNum.innerHTML = videoHasSubtitles;
+
     }
 
   }
@@ -277,7 +273,7 @@ function loadSubtitle() {
     let videoNameOnlyLength = videoNameOnly.length;
   
     let videoDir = path.dirname(d._path);
-    let folderFiles = fs.readdirSync(videoDir);
+    let folderFiles = fse.readdirSync(videoDir);
 
     let foundedSubIdx = 0;
 
@@ -298,14 +294,14 @@ function loadSubtitle() {
           if (fileNameLang === targetSubLanguage) {
             // found srt to the setted language
 
-            let srtData = fs.readFileSync(videoDir + '/' + fileName);
+            let srtData = fse.readFileSync(videoDir + '/' + fileName);
             // html video player currently not support the .srt files. - so let's convert it to vtt..
-
+            
             srt2vtt(srtData, function(err, vttData) {
               if (err) throw new Error(err);
               
               subtitleContainer.value = vttData;
-  
+              
               let videoTrack = document.createElement("track");
               videoTrack.setAttribute("kind", "subtitles");
               videoTrack.setAttribute("srclang", fileNameLang);
@@ -316,7 +312,7 @@ function loadSubtitle() {
               let vttBlob = new Blob([vttText], {
                 type: 'text/vtt'
               });
-
+              
               videoTrack.setAttribute("src", URL.createObjectURL(vttBlob));
               
               videoplayer.appendChild(videoTrack);
@@ -325,7 +321,7 @@ function loadSubtitle() {
 
               currSubNum.innerHTML = foundedSubIdx;
               tracks.mode = 'showing';
-  
+              
               setTimeout(function(){ setToast(i18n.__('subtitle') + ': ' + fileNameLang); }, 3000);
 
             });
@@ -371,7 +367,7 @@ function changeSubtitle() {
       let videoNameOnlyLength = videoNameOnly.length;
     
       let videoDir = path.dirname(d._path);
-      let folderFiles = fs.readdirSync(videoDir);
+      let folderFiles = fse.readdirSync(videoDir);
 
       let foundedSubIdx = 0;
 
@@ -391,7 +387,7 @@ function changeSubtitle() {
             if (foundedSubIdx === targetSubIdx) {
               // found srt to the setted num
 
-              let srtData = fs.readFileSync(videoDir + '/' + fileName);
+              let srtData = fse.readFileSync(videoDir + '/' + fileName);
               // html video player currently not support the .srt files. - so let's convert it to vtt..
 
               srt2vtt(srtData, function(err, vttData) {
@@ -419,7 +415,7 @@ function changeSubtitle() {
                 store.set('settings.showsubtitle', true);
                 showSubtitle = true;
                 tracks.mode = 'showing';
-          
+                console.log('showSubtitle : ' + showSubtitle);
                 setToast(i18n.__('subtitle') + ': ' + fileNameLang);
 
               });
@@ -458,31 +454,4 @@ function getAudiotracks(filename, filepath) {
 
 function changeAudioTrack() {
   setToast('Not supported yet! :(');
-}
-
-function getAudioEncoding(mkvpath) {
-
-  ffmpeg.ffprobe(mkvpath, function(err, metadata) {
-
-    let streams = metadata.streams.length;
-
-    for (let i = 0; i < streams; i++) {
-
-      if (metadata.streams[i].codec_type === 'audio') {
-
-        if (metadata.streams[i].codec_name === 'ac3') {
-          console.log('Note: The ac3 codec is not supported in html5 videoplayers. :( Maybe later..')
-          document.getElementById("aacconvertspan").setAttribute("data", mkvpath); 
-          document.getElementById("aacconvertspan").setAttribute("onclick", "convert2AAC();");
-          w3.show("#aacconvertspan");
-          w3.show("#aacconvertspanclose");
-          break;
-        }
-
-      }
-
-    }
-
-  });
-
 }

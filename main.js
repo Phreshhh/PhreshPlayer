@@ -6,14 +6,6 @@ const {autoUpdater} = require("electron-updater");
 const windowStateKeeper = require('electron-window-state');
 const openAboutWindow = require('about-window').default;
 
-const fs = require('fs');
-const path = require('path');
-
-const Datastore = require('nedb');
-const appDir = app.getPath('userData');
-
-let playlistfile = new Datastore({ filename: appDir + '/playlist.db', autoload: true });
-
 const i18n = new(require(__dirname + '/locales/i18n'));
 
 let mainWindow;
@@ -140,6 +132,30 @@ function createWindow () {
         type: 'separator'
       },
       {
+        label: i18n.__('theme'),
+        submenu: [
+          {
+            label: "Phresh (default)",
+            click () { mainWindow.webContents.send('callFunction', 'setTheme', 'phresh'); }
+          },
+          {
+            label: "Cobalt",
+            click () { mainWindow.webContents.send('callFunction', 'setTheme', 'cobalt'); }
+          },
+          {
+            label: "Full Metal",
+            click () { mainWindow.webContents.send('callFunction', 'setTheme', 'fullmetal'); }
+          },
+          {
+            label: "Hello Kitty",
+            click () { mainWindow.webContents.send('callFunction', 'setTheme', 'hellokitty'); }
+          }
+        ]
+      },
+      {
+        type: 'separator'
+      },
+      {
         label: i18n.__('quit'),
         click () { mainWindow.close(); }
       },
@@ -184,7 +200,7 @@ function createWindow () {
   if ( process.argv[1] !== '.') {
     autoUpdater.checkForUpdates();
   }
- 
+
 }
 
 app.on('ready', createWindow);

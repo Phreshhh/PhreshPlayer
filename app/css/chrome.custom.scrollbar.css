@@ -6,7 +6,6 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  /* background: -webkit-linear-gradient(left, rgba(198,198,198,1) 0%,rgba(220,220,220,1) 100%) !important; */
   background: -webkit-linear-gradient(left, rgb(48, 202, 74) 0%,rgb(19, 167, 43) 100%) !important;
   background-clip: padding-box !important;
   border: 2px solid transparent !important;
@@ -17,14 +16,11 @@
   border-radius: 25px;
 }
 
-/* :window-inactive inspired by cssTricks */
 ::-webkit-scrollbar-thumb:hover {
-/* background: -webkit-linear-gradient(left, rgba(158,158,158,1) 0%,rgba(180,180,180,1) 100%) !important; */
   background: -webkit-linear-gradient(left, rgb(29, 129, 25) 0%,rgb(5, 117, 20) 100%) !important;
   background-clip: padding-box !important;
 }
 
-/* :window-inactive inspired by cssTricks */
 ::-webkit-scrollbar-thumb:window-inactive {
   background: -webkit-linear-gradient(left, rgba(58,58,58,1) 0%,rgba(80,80,80,1) 100%) !important;
   background-clip: padding-box !important;
@@ -36,7 +32,6 @@
 }
 
 ::-webkit-scrollbar-track {
-  /*background: -webkit-linear-gradient(left, rgba(224,224,224,1) 0%,rgba(200,200,200,1) 100%) !important;*/
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAAAAABVicqIAAAACXZwQWcAAABkAAAAZACHJl7mAAAASUlEQVRo3u3PQQEAIAzDQOoE/6bAyaaiv0sUXN799TOnX0hISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhIqi0mjfaIwOmF7QAAAABJRU5ErkJggg==) repeat !important;
   /*background-clip: padding-box !important;*/
   /*border: 2px solid white !important;*/

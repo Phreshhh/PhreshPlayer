@@ -1,0 +1,45 @@
+:root {
+  --appcolor: rgb(84, 97, 219);
+  --apphighlight: rgb(114, 125, 231);
+}
+
+body {background-color:rgb(66, 62, 62);color:white;}
+
+.bgColor {background-color:var(--appcolor)!important;}
+.color {color:var(--appcolor)!important;}
+.colorOnHover:hover {color:var(--appcolor)!important;}
+.bgColorOnHover:hover {background-color:var(--appcolor)!important;}
+a:hover {color:var(--appcolor);}
+.activated {color:var(--appcolor)!important;}
+
+video#videoplayer {background-color:rgb(66, 62, 62);}
+
+#searchinplaylist {border-left:1px solid var(--apphighlight);background-color:rgb(66, 62, 62);color:var(--apphighlight);}
+input#searchinplaylist:focus {border-bottom:1px solid var(--apphighlight);}
+
+ol#playlist {background-color:rgb(66, 62, 62);border-left:1px solid var(--apphighlight);}
+ol#playlist li a:hover {color:var(--apphighlight);}
+ol#playlist li i.deletefromlistlink {color:#580b18;}
+ol#playlist li i.deletefromlistlink:hover {color:rgb(153, 25, 25);}
+
+div#controls {background-color: rgba(0,0,0,0.3);border:2px solid var(--appcolor);}
+
+div#playprogressholder {background-color:#dddddd;;}
+div#playprogress {background-color:var(--apphighlight);}
+
+.w3-modal header {background-color:var(--apphighlight);}
+.w3-modal .w3-modal-content {background-color:#7da6f1;}
+
+#loading-overlay {background-color:rgba(114, 125, 231, 0.4);}
+#loading-overlay i {color:var(--appcolor);}
+
+::-webkit-scrollbar-thumb {
+  background: -webkit-linear-gradient(left, var(--appcolor) 0%,var(--apphighlight) 100%) !important;
+  box-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 0px inset, rgba(16, 168, 74, 0.067) 0px -1px 0px inset !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: -webkit-linear-gradient(left, rgb(69, 82, 204) 0%,rgb(55, 68, 128) 100%) !important;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: -webkit-linear-gradient(left, rgba(58,58,58,1) 0%,rgba(80,80,80,1) 100%) !important;
+}

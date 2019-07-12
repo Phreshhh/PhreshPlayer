@@ -1,0 +1,45 @@
+:root {
+  --appcolor: rgb(68, 228, 68);
+  --apphighlight: rgb(76, 175, 80);
+}
+
+body {background-color:black;color:white;}
+
+.bgColor {background-color:var(--appcolor)!important;}
+.color {color:var(--appcolor)!important;}
+.colorOnHover:hover {color:var(--appcolor)!important;}
+.bgColorOnHover:hover {background-color:var(--appcolor)!important;}
+a:hover {color:var(--appcolor);}
+.activated {color:var(--appcolor)!important;}
+
+video#videoplayer {background-color:black;}
+
+#searchinplaylist {border-left:1px solid var(--apphighlight);background-color:black;color:var(--apphighlight);}
+input#searchinplaylist:focus {border-bottom:1px solid var(--apphighlight);}
+
+ol#playlist {background-color:black;border-left:1px solid var(--apphighlight);}
+ol#playlist li a:hover {color:var(--apphighlight);}
+ol#playlist li i.deletefromlistlink {color:#8e0d0d;}
+ol#playlist li i.deletefromlistlink:hover {color:red;}
+
+div#controls {background-color: rgba(0,0,0,0.4);border:2px solid white;}
+
+div#playprogressholder {background-color:#dddddd;;}
+div#playprogress {background-color:var(--apphighlight);}
+
+.w3-modal header {background-color:var(--apphighlight);}
+.w3-modal .w3-modal-content {background-color:#9ebe9e;}
+
+#loading-overlay {background-color:rgba(76, 175, 80, 0.4);}
+#loading-overlay i {color:var(--appcolor);}
+
+::-webkit-scrollbar-thumb {
+  background: -webkit-linear-gradient(left, var(--appcolor) 0%,var(--apphighlight) 100%) !important;
+  box-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 0px inset, rgba(16, 168, 74, 0.067) 0px -1px 0px inset !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: -webkit-linear-gradient(left, rgb(73, 204, 69) 0%,rgb(49, 131, 60) 100%) !important;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: -webkit-linear-gradient(left, rgba(58,58,58,1) 0%,rgba(80,80,80,1) 100%) !important;
+}

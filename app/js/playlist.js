@@ -1,9 +1,11 @@
 module.exports = {
   toggleShowPlaylist,
   fillPlaylist,
+  searchInPlaylist,
   addToPlaylist,
   savePlaylist,
-  readPlaylistFile
+  readPlaylistFile,
+  deleteVideo
 };
 
 function toggleShowPlaylist() {
@@ -12,6 +14,8 @@ function toggleShowPlaylist() {
 
   if (isPlaylistVisible === "" || isPlaylistVisible === "block") {
 
+    searchinplaylist.style.display = 'none';
+    searchinplaylisticon.style.display = 'none';
     playlist.style.display = 'none';
     videoplayer.style.width = '100%';
     w3.removeClass('#playlistbutton','activated');
@@ -20,6 +24,8 @@ function toggleShowPlaylist() {
 
   } else {
 
+    searchinplaylist.style.display = 'block';
+    searchinplaylisticon.style.display = 'block';
     playlist.style.display = 'block';
     videoplayer.style.width = '60%';
     w3.addClass('#playlistbutton','activated');
@@ -36,10 +42,22 @@ function fillPlaylist() {
     docs.forEach(function(d) {
   
       let playlistLI = document.createElement("li");
-      playlistLI.appendChild(document.createTextNode(d._name));
-      playlistLI.setAttribute("id", "vid-" + d._id);
-      playlistLI.setAttribute("class", "vidlink");
-      playlistLI.setAttribute("onclick", "playerjs.playVideo(" + d._id + ");");
+      let playlistLI_videoOpenA = document.createElement("a");
+      let playlistLI_videoDeleteI = document.createElement("i");
+
+      playlistLI.setAttribute("id", "vid-li-" + d._id);
+
+      playlistLI_videoDeleteI.setAttribute("id", "vid-x-" + d._id);
+      playlistLI_videoDeleteI.setAttribute("class", "fa fa-close clickable deletefromlistlink");
+      playlistLI_videoDeleteI.setAttribute("onclick", "playlistjs.deleteVideo(" + d._id + ");");
+
+      playlistLI_videoOpenA.appendChild(document.createTextNode(d._name));
+      playlistLI_videoOpenA.setAttribute("id", "vid-" + d._id);
+      playlistLI_videoOpenA.setAttribute("class", "vidlink");
+      playlistLI_videoOpenA.setAttribute("onclick", "playerjs.playVideo(" + d._id + ");");
+
+      playlistLI.appendChild(playlistLI_videoDeleteI);
+      playlistLI.appendChild(playlistLI_videoOpenA);
       playlist.appendChild(playlistLI);
 
     });
@@ -59,6 +77,71 @@ function fillPlaylist() {
 }
 fillPlaylist();
 
+function searchInPlaylist(searchedText) {
+
+  playlist.innerHTML = '';
+
+  if (searchedText === '') {
+
+    playlistfile.find({}, function(err, docs) {
+      docs.forEach(function(d) {
+    
+        let playlistLI = document.createElement("li");
+        let playlistLI_videoOpenA = document.createElement("a");
+        let playlistLI_videoDeleteI = document.createElement("i");
+  
+        playlistLI.setAttribute("id", "vid-li-" + d._id);
+  
+        playlistLI_videoDeleteI.setAttribute("id", "vid-x-" + d._id);
+        playlistLI_videoDeleteI.setAttribute("class", "fa fa-close clickable deletefromlistlink");
+        playlistLI_videoDeleteI.setAttribute("onclick", "playlistjs.deleteVideo(" + d._id + ");");
+  
+        playlistLI_videoOpenA.appendChild(document.createTextNode(d._name));
+        playlistLI_videoOpenA.setAttribute("id", "vid-" + d._id);
+        playlistLI_videoOpenA.setAttribute("class", "vidlink");
+        playlistLI_videoOpenA.setAttribute("onclick", "playerjs.playVideo(" + d._id + ");");
+  
+        playlistLI.appendChild(playlistLI_videoDeleteI);
+        playlistLI.appendChild(playlistLI_videoOpenA);
+        playlist.appendChild(playlistLI);
+  
+      });
+  
+    });
+
+  } else {
+
+    let searchedTextRegExp = new RegExp(".*"+searchedText+".*");
+
+    playlistfile.find({ _name: {$regex : searchedTextRegExp} }).exec(function (err, docs) {
+      docs.forEach(function(d) {
+  
+        let playlistLI = document.createElement("li");
+        let playlistLI_videoOpenA = document.createElement("a");
+        let playlistLI_videoDeleteI = document.createElement("i");
+
+        playlistLI.setAttribute("id", "vid-li-" + d._id);
+
+        playlistLI_videoDeleteI.setAttribute("id", "vid-x-" + d._id);
+        playlistLI_videoDeleteI.setAttribute("class", "fa fa-close clickable deletefromlistlink");
+        playlistLI_videoDeleteI.setAttribute("onclick", "playlistjs.deleteVideo(" + d._id + ");");
+
+        playlistLI_videoOpenA.appendChild(document.createTextNode(d._name));
+        playlistLI_videoOpenA.setAttribute("id", "vid-" + d._id);
+        playlistLI_videoOpenA.setAttribute("class", "vidlink");
+        playlistLI_videoOpenA.setAttribute("onclick", "playerjs.playVideo(" + d._id + ");");
+
+        playlistLI.appendChild(playlistLI_videoDeleteI);
+        playlistLI.appendChild(playlistLI_videoOpenA);
+        playlist.appendChild(playlistLI);
+  
+      });
+    });
+
+  }
+
+}
+
 function addToPlaylist(newvideos) {
 
   playlistfile.insert(newvideos, function(err, docs) {
@@ -67,10 +150,22 @@ function addToPlaylist(newvideos) {
       console.log('Added file:', d._name);
 
       let playlistLI = document.createElement("li");
-      playlistLI.appendChild(document.createTextNode(d._name));
-      playlistLI.setAttribute("id", "vid-" + d._id);
-      playlistLI.setAttribute("class", "vidlink");
-      playlistLI.setAttribute("onclick", "playerjs.playVideo(" + d._id + ");");
+      let playlistLI_videoOpenA = document.createElement("a");
+      let playlistLI_videoDeleteI = document.createElement("i");
+
+      playlistLI.setAttribute("id", "vid-li-" + d._id);
+
+      playlistLI_videoDeleteI.setAttribute("id", "vid-x-" + d._id);
+      playlistLI_videoDeleteI.setAttribute("class", "fa fa-close clickable deletefromlistlink");
+      playlistLI_videoDeleteI.setAttribute("onclick", "playlistjs.deleteVideo(" + d._id + ");");
+
+      playlistLI_videoOpenA.appendChild(document.createTextNode(d._name));
+      playlistLI_videoOpenA.setAttribute("id", "vid-" + d._id);
+      playlistLI_videoOpenA.setAttribute("class", "vidlink");
+      playlistLI_videoOpenA.setAttribute("onclick", "playerjs.playVideo(" + d._id + ");");
+
+      playlistLI.appendChild(playlistLI_videoDeleteI);
+      playlistLI.appendChild(playlistLI_videoOpenA);
       playlist.appendChild(playlistLI);
 
     });
@@ -107,11 +202,10 @@ function savePlaylist() {
       fileName = fileName.slice(0, -5);
     }
 
-    fs.writeFile(fileName + '.pppl', playlistString, (err) => {
+    fse.writeFile(fileName + '.pppl', playlistString, (err) => {
       if(err){
         alert(i18n.__('file_save_failed') + err.message)
       }
-      /* alert(i18n.__('file_saved') + "!"); */
       setToast(i18n.__('file_saved') + '!');
     });
 
@@ -122,7 +216,7 @@ function savePlaylist() {
 function readPlaylistFile(playlistfilepath) {
 
   let readline = require('readline'),
-      instream = fs.createReadStream(playlistfilepath),
+      instream = fse.createReadStream(playlistfilepath),
       outstream = new (require('stream'))(),
       rl = readline.createInterface(instream, outstream);
   
@@ -149,6 +243,14 @@ function readPlaylistFile(playlistfilepath) {
 
   rl.on('close', function (line) {console.log(newvideos2)
     addToPlaylist(newvideos2);
+  });
+
+}
+
+function deleteVideo(videoID) {
+
+  playlistfile.remove({ _id: videoID }, function(err, numDeleted) {
+    document.getElementById('vid-li-' + videoID).outerHTML = '';
   });
 
 }

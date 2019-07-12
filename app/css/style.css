@@ -1,31 +1,36 @@
-body {background-color:black;color:white;font-weight:bold;}
+body {font-weight:bold;}
+
 a {text-decoration:none;}
 .fa {margin-left:10px;margin-right:10px;}
 .w3-tooltip-absolute {position:absolute;left:0;bottom:18px;padding:5px;}
 
-.bgColor {background-color:rgb(68, 228, 68)!important;}
-.color {color:rgb(68, 228, 68)!important;}
-.colorOnHover:hover {color:rgb(68, 228, 68)!important;}
-.bgColorOnHover:hover {background-color:rgb(68, 228, 68)!important;}
-a:hover {color:rgb(68, 228, 68);}
-.activated {color:rgb(68, 228, 68)!important;}
+.clickable {cursor:pointer;}
 
-div#toasts {z-index:9999999999;position:absolute;top:0;left:0;}
-span#aacconvertspan {position:absolute;top:25px;left:0;cursor:pointer;font-family:sans-serif;}
-span#aacconvertspanclose {position:absolute;top:25px;left:88px;cursor:pointer;}
-video#videoplayer {z-index:-1;width:60%;background-color:black;}
-video::-webkit-media-controls {display:none !important;}
-ol#playlist {width:40%;max-width:40%;margin:0;background-color:black;border-left:1px solid green;overflow-y:auto;}
-ol#playlist li {cursor:pointer;}
-ol#playlist li:hover {color:blueviolet;}
+div#toastsholder {position:absolute;}
+div#toasts {z-index:9999999999!important;position:relative;top:20px;left:10px;}
+
+video#videoplayer {z-index:-1;width:60%;}
+video::-webkit-media-controls {display:none!important;}
+
+#searchinplaylist {width:40%;margin:0;border:0;}
+input#searchinplaylist:focus {outline:none;}
+#searchinplaylisticon {position:absolute;top:5px;right:0;cursor:pointer;}
+
+ol#playlist {width:40%;max-width:40%;margin:0;overflow-y:auto;}
+ol#playlist li a {cursor:pointer;}
+
 div#controlsholder {position:absolute;right:50%;bottom:5%;width:80%;}
-div#controls {z-index:9999999999;min-height:150px;position:relative;right:-50%;bottom:5%;background-color: rgba(0,0,0,0.4);border:2px solid white;border-radius:10px;text-align:center;}
+div#controls {z-index:9999999999!important;min-height:150px;position:relative;right:-50%;bottom:5%;border-radius:10px;text-align:center;}
 div.progressholder {height:10px;margin:0 auto;}
 div.progress {height:10px;font-size:8px;}
 div#playprogressholder {width:70%;cursor:pointer;}
 div#elapsedtime {margin:-12px 0 0 10px;}
 div#reamingtime {margin:-12px 10px 0 0;}
-div.fileconvertbox {font-size:8px;font-weight:bold;}
+
+#loading-overlay {position:absolute;top:0;left:0;}
+div.openedoverlay {z-index:9999999999;width:100%;height:100%;}
+div.closedoverlay {z-index:-1;width:0px;height:0px;}
+#loading-overlay i {position:absolute;top:calc(50% - 37px);left:calc(50% - 37px);}
 
 @media screen and (max-width:600px) { div#controls {min-height:170px;} }
 @media screen and (max-width:350px) { div#controls {min-height:200px;} }
