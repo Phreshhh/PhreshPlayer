@@ -475,7 +475,4 @@ function loadPlugins() {
 
 }
 
-setTimeout( () => {
-  // w8 a bit for DOM, on slower machines
-  loadPlugins();
-}, 3000);
+loadPlugins();

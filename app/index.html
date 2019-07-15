@@ -157,24 +157,22 @@
 
     <!-- Modals -->
 
-    <div id="modalsholder">
-
-      <div id="pluginsmodal" class="w3-modal">
-        <div class="w3-modal-content w3-animate-zoom w3-card-4">
-          <header class="w3-container">
-            <span onclick="showHidePlugins();" class="w3-button w3-right w3-round w3-hover-white">&times;</span>
-            <span onclick="document.location.href='index.html';" class="w3-button w3-right w3-round w3-hover-white"><i class="fa fa-refresh"></i></span>
-            <h2> <script>document.write(i18n.__('plugins'));</script> </h2>
-          </header>
-          <div class="w3-modal-content">
-            <div id="pluginsmodalcontent" class="w3-container">
-              <!-- fill it with plugins -->
-            </div>
+    <div id="pluginsmodal" class="w3-modal">
+      <div class="w3-modal-content w3-animate-zoom w3-card-4">
+        <header class="w3-container">
+          <span onclick="showHidePlugins();" class="w3-button w3-right w3-round w3-hover-white">&times;</span>
+          <span onclick="document.location.href='index.html';" class="w3-button w3-right w3-round w3-hover-white"><i class="fa fa-refresh"></i></span>
+          <h2> <script>document.write(i18n.__('plugins'));</script> </h2>
+        </header>
+        <div class="w3-modal-content">
+          <div id="pluginsmodalcontent" class="w3-container">
+            <!-- fill it with plugins -->
           </div>
         </div>
       </div>
-
     </div>
+
+    <div id="modalsholder"></div>
 
     <script>
       const windowtitle = document.getElementById('windowtitle');
@@ -238,7 +236,7 @@
       const store = new Store();
       
       if (!store.has('settings.pulginslastsync')) {
-        store.set('settings.pulginslastsync', todayDate);
+        store.set('settings.pulginslastsync', '2019-7-1');
       }
       
       if (store.has('settings.theme')) {
@@ -829,23 +827,35 @@
         let pluginsLastSyncDate = store.get('settings.pulginslastsync');
 
         if (pluginsLastSyncDate != todayDate) {
+
           pluginsjs.syncPluginsInfo()
           .then( () => {
+
             store.set('settings.pulginslastsync', todayDate);
-            pluginsjs.getPluginsInfo();
+
+            if (pluginsmodal.style.display === 'block') {
+              w3.hide('#pluginsmodal');
+              w3.removeClass('#plugins','activated');
+            } else {
+              w3.show('#pluginsmodal');
+              w3.addClass('#plugins','activated');
+              pluginsjs.getPluginsInfo();
+            }
+
           });
-        }
-        
-        pluginsjs.getPluginsInfo()
-        .then( () => {
+
+        } else {
+
           if (pluginsmodal.style.display === 'block') {
             w3.hide('#pluginsmodal');
             w3.removeClass('#plugins','activated');
           } else {
             w3.show('#pluginsmodal');
             w3.addClass('#plugins','activated');
+            pluginsjs.getPluginsInfo();
           }
-        });
+
+        }
 
       }
 
