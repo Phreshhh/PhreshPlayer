@@ -285,11 +285,11 @@
         store.set('settings.showsubtitle', false);
         showSubtitle = false;
       }
-
+      
       if (!store.has('settings.subtitlelanguage')) {
 
         if (store.has('settings.language')) {
-          storedLanguage = store.get('settings.language');
+          let storedLanguage = store.get('settings.language');
           store.set('settings.subtitlelanguage', storedLanguage);
         } else {
           store.set('settings.subtitlelanguage', 'en');
@@ -883,11 +883,11 @@
 
         return time.join(':');
       }
-
+      
       const playerjs = require('./js/player.js');
       const playlistjs = require('./js/playlist.js');
       const pluginsjs = require('./js/plugins.js');
-
+      
     </script>
   </body>
 </html>
