@@ -42,8 +42,6 @@ function playVideo(videoid) {
 
     if (d !== null) {
 
-      w3.hide("#aacconvertspan");
-      w3.hide("#aacconvertspanclose");
       w3.removeClass('.vidlink','activated');
       w3.addClass('#vid-' + videoid,'activated');
       windowtitle.innerHTML = d._name;
@@ -243,7 +241,7 @@ function getSubtitles(filename, filepath) {
     }
 
   }
-  
+
 }
 
 function loadSubtitle() {
@@ -408,7 +406,6 @@ function changeSubtitle() {
                 store.set('settings.showsubtitle', true);
                 showSubtitle = true;
                 tracks.mode = 'showing';
-                console.log('showSubtitle : ' + showSubtitle);
                 setToast(i18n.__('subtitle') + ': ' + fileNameLang);
 
               });
