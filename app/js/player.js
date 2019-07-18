@@ -127,22 +127,15 @@ function playNext() {
 
 function volumeControl(setto) {
 
-  let currVolume = videoplayer.volume;
+  let currVolume = Math.round(videoplayer.volume * 100) / 100;
 
-  if (setto === "up") {
-    
-    if (currVolume < 1) {
-      videoplayer.volume = currVolume + 0.1;
-    }
-
-  } else if (setto === "down") {
-    
-    if (currVolume > 0.1) {
-      videoplayer.volume = currVolume - 0.1;
-    }
-
+  if (setto === "up" && currVolume < 1) {
+    currVolume += 0.05;
+  } else if (setto === "down" && currVolume > 0) {
+    currVolume -= 0.05;
   }
-
+  videoplayer.volume = currVolume;
+  
   store.set('settings.volume', videoplayer.volume);
 
   let currVolumePercent = Math.floor(currVolume * 100);
